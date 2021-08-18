@@ -14,7 +14,10 @@ createCustomElement('example-card', {
 			reflect: false
 		},
 		title: {},
-		lane: {}
+		lane: {},
+		parentSet: {
+			
+		}
 	},
 	styles,
 	behaviors: [{
