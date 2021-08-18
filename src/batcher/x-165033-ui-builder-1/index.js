@@ -18,13 +18,23 @@ createCustomElement('x-165033-ui-builder-1', {
 		},
 		cards: {
 			default: []
+		},
+		sysid: {
+default: '12345'
 		}
 	},
 	actionHandlers: {
-		'NOW_BUTTON#CLICKED': ({ action, updateState }) => {
-			//TODO: get list of cards in this lane
-			alert(JSON.stringify(action.payload.buttonId));
-			
+		'NOW_BUTTON#CLICKED': ({ properties: {cards, laneId, sysid} }) => {
+			//alert(JSON.stringify(cards) + ' ' + laneId);
+				var batch = cards.map(cards => {
+					if(cards.lane === laneId) {
+						cards.parentSet = {
+							'sysid':  sysid
+						}
+					return cards;
+					}
+				});
+				alert(JSON.stringify(batch));
 		}
 	},
 	styles,
