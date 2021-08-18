@@ -1,1 +1,1 @@
-import './batcher/board';
+import './batcher/create-parent';

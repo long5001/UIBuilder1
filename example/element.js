@@ -1,7 +1,7 @@
-import '../src/batcher/board';
+import '../src/batcher/create-parent';
 
 const el = document.createElement('DIV');
 document.body.appendChild(el);
 
 el.innerHTML = `		
-<x-165033-ui-builder-1-board></x-165033-ui-builder-1-board>`;
+<x-165033-ui-builder-create-parent></x-165033-ui-builder-create-parent>`;

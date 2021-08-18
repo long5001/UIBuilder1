@@ -1,1 +1,7 @@
-@import '@servicenow/sass-kit/host';
+.board-hidden {
+    display: none;
+}
+
+.board-show {
+    display: block;
+}

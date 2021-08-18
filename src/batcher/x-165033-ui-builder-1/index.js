@@ -20,7 +20,7 @@ createCustomElement('x-165033-ui-builder-1', {
 			default: []
 		},
 		sysid: {
-default: '12345'
+default: 'a361dd4b1b313010e4495467624bcb74'
 		}
 	},
 	actionHandlers: {
