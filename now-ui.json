@@ -1,0 +1,15 @@
+{
+	"components": {
+	    "x-165033-ui-builder-1": {
+	        "innerComponents": [],
+			"uiBuilder": {
+				"associatedTypes": ["global.core", "global.landing-page"],
+				"label": "My Component",
+				"icon": "document-outline",
+				"description": "A description of my component",
+				"category": "primitives"
+			}
+	    }
+	},
+	"scopeName": "x_165033_ui_buil_0"
+}
