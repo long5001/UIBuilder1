@@ -15,7 +15,6 @@ createCustomElement("x-165033-ui-builder-1-board", {
 			{
 				laneId: 0,
 				title: "Open Sets",
-				sysid: "",
 			},
 			{
 				laneId: 1,

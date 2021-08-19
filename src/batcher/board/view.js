@@ -11,6 +11,7 @@ export default (state) => {
 						key={lane.laneId}
 						laneId={lane.laneId}
 						title={lane.title}
+						sysid={lane.sysid}
 						cards={cards.filter((card) => card.lane === lane.laneId)}
 					/>
 				</div>
