@@ -1,33 +1,32 @@
-import {
-	createCustomElement
-} from '@servicenow/ui-core';
-import snabbdom from '@servicenow/ui-renderer-snabbdom';
-import styles from './styles.scss';
-import view from './view';
-import taskBoardActions from './actions';
-import '@servicenow/now-button';
+import { createCustomElement } from "@servicenow/ui-core";
+import snabbdom from "@servicenow/ui-renderer-snabbdom";
+import styles from "./styles.scss";
+import view from "./view";
+import taskBoardActions from "./actions";
+import "@servicenow/now-button";
 
-createCustomElement('x-165033-ui-builder-1-board', {
+createCustomElement("x-165033-ui-builder-1-board", {
 	renderer: {
-		type: snabbdom
+		type: snabbdom,
 	},
 	view,
 	initialState: {
-		lanes: [{
+		lanes: [
+			{
 				laneId: 0,
-				title: 'Open Sets'
+				title: "Open Sets",
 			},
 			{
 				laneId: 1,
-				title: 'Parent'
-			}
+				title: "Parent",
+			},
 		],
 	},
 	properties: {
 		parentSetName: {
-			default: 'default parent name'
-		}
+			default: "default parent name",
+		},
 	},
 	styles,
-	...taskBoardActions
+	...taskBoardActions,
 });
