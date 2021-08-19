@@ -26,6 +26,52 @@ export default {
 				});
 			},
 		},
+		[actionTypes.COMPONENT_PROPERTY_CHANGED]: ({
+			state,
+			action,
+			updateState,
+		}) => {
+			var lanes = state.lanes;
+			var propertyChanged = action.payload.name;
+			var newPropertyValue = action.payload.value;
+			var laneTitle, laneSysId;
+
+			console.log(
+				">>>DEBUG: on " +
+					propertyChanged +
+					" change lanes are - " +
+					JSON.stringify(lanes)
+			);
+
+			if (propertyChanged === "parentSetName") {
+				console.log(
+					propertyChanged +
+						" changed to " +
+						"'" +
+						newPropertyValue +
+						+"'" +
+						" -- >>PAYLOAD>> " +
+						JSON.stringify(action)
+				);
+				laneTitle = newPropertyValue;
+				lanes[1].title = laneTitle;
+			} else if (propertyChanged === "parentSetId") {
+				console.log(
+					propertyChanged +
+						" changed to " +
+						newPropertyValue +
+						" -- >>PAYLOAD>> " +
+						JSON.stringify(action)
+				);
+				laneSysId = newPropertyValue;
+				lanes[1].sysid = laneSysId;
+			}
+
+			console.log(">>>DEBUG: after update, lanes are " + JSON.stringify(lanes));
+			updateState({
+				lanes: lanes,
+			});
+		},
 
 		[actionTypes.COMPONENT_CONNECTED]: ({ dispatch }) => {
 			dispatch("UPDATE_SETS_REQUESTED", {

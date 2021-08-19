@@ -20,7 +20,7 @@ createCustomElement("x-165033-ui-builder-1", {
 			default: [],
 		},
 		sysid: {
-			default: "a361dd4b1b313010e4495467624bcb74",
+			default: "default lane sys_id",
 		},
 	},
 	actionHandlers: {

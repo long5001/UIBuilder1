@@ -15,16 +15,21 @@ createCustomElement("x-165033-ui-builder-1-board", {
 			{
 				laneId: 0,
 				title: "Open Sets",
+				sysid: "",
 			},
 			{
 				laneId: 1,
-				title: "Parent",
+				title: "New Parent Set",
+				sysid: "",
 			},
 		],
 	},
 	properties: {
 		parentSetName: {
 			default: "default parent name",
+		},
+		parentSetId: {
+			default: 987654321,
 		},
 	},
 	styles,
