@@ -5,7 +5,7 @@ export default state => {
 	const {lanes, cards} = state;
 	return (
 		<div className="task-board">
-			<now-card>{state.properties.parentSetName}</now-card>
+			
 			{lanes.map(lane => (
 				<div className="lane-container">
 					<x-165033-ui-builder-1
