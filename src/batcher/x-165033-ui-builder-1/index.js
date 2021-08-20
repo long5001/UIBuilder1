@@ -58,10 +58,10 @@ createCustomElement("x-165033-ui-builder-1", {
 			}
 		),
 		BATCHING_STARTED: ({ action }) => {
-			console.log("START" + JSON.stringify(action.meta.request.data));
+			//console.log("START" + JSON.stringify(action.meta.request.data));
 		},
 		SETS_UPDATED: ({ action }) => {
-			console.log('END ' + JSON.stringify(action.meta.request.data));
+			//console.log('END ' + JSON.stringify(action.meta.request.data));
 		},
 	},
 	styles,
