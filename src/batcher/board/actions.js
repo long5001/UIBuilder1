@@ -36,33 +36,14 @@ export default {
 			var newPropertyValue = action.payload.value;
 			var laneTitle, laneSysId;
 
-			console.log(
-				">>>DEBUG: on " +
-					propertyChanged +
-					" change lanes are - " +
-					JSON.stringify(lanes)
-			);
+			console.log(">>>DEBUG: on " + propertyChanged + " change lanes are - " + JSON.stringify(lanes));
 
 			if (propertyChanged === "parentSetName") {
-				console.log(
-					propertyChanged +
-						" changed to " +
-						"'" +
-						newPropertyValue +
-						+"'" +
-						" -- >>PAYLOAD>> " +
-						JSON.stringify(action)
-				);
+				console.log( propertyChanged + " changed to " + "'" + newPropertyValue + "'" + " -- >>PAYLOAD>> " + JSON.stringify(action));
 				laneTitle = newPropertyValue;
 				lanes[1].title = laneTitle;
 			} else if (propertyChanged === "parentSetId") {
-				console.log(
-					propertyChanged +
-						" changed to " +
-						newPropertyValue +
-						" -- >>PAYLOAD>> " +
-						JSON.stringify(action)
-				);
+				console.log( propertyChanged + " changed to " + newPropertyValue + " -- >>PAYLOAD>> " + JSON.stringify(action));
 				laneSysId = newPropertyValue;
 				lanes[1].sysid = laneSysId;
 			}
@@ -76,8 +57,7 @@ export default {
 		[actionTypes.COMPONENT_CONNECTED]: ({ dispatch }) => {
 			dispatch("UPDATE_SETS_REQUESTED", {
 				table: "sys_update_set",
-				sysparm_query:
-					"state=in progress^application.scope=x_165033_uibuild_0^parentISEMPTY^ORDERBYsys_created_on",
+				sysparm_query: "state=in progress^application.scope=x_165033_uibuild_0^parentISEMPTY^ORDERBYsys_created_on",
 			});
 		},
 		UPDATE_SETS_REQUESTED: createHttpEffect("/api/now/table/:table", {
@@ -95,7 +75,7 @@ export default {
 					title: sets[i].name,
 					cardId: i,
 					lane: 0,
-					setSysId: sets[i].sys_id
+					setSysId: sets[i].sys_id,
 				});
 			}
 			updateState({
