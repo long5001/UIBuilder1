@@ -35,15 +35,38 @@ export default {
 			var propertyChanged = action.payload.name;
 			var newPropertyValue = action.payload.value;
 			var laneTitle, laneSysId;
-
-			console.log(">>>DEBUG: on " + propertyChanged + " change lanes are - " + JSON.stringify(lanes));
-
+			/*
+			console.log(
+				">>>DEBUG: on " +
+					propertyChanged +
+					" change lanes are - " +
+					JSON.stringify(lanes)
+			);
+*/
 			if (propertyChanged === "parentSetName") {
-				console.log( propertyChanged + " changed to " + "'" + newPropertyValue + "'" + " -- >>PAYLOAD>> " + JSON.stringify(action));
+				/*
+				console.log(
+					propertyChanged +
+						" changed to " +
+						"'" +
+						newPropertyValue +
+						"'" +
+						" -- >>PAYLOAD>> " +
+						JSON.stringify(action)
+				);
+				*/
 				laneTitle = newPropertyValue;
 				lanes[1].title = laneTitle;
 			} else if (propertyChanged === "parentSetId") {
-				console.log( propertyChanged + " changed to " + newPropertyValue + " -- >>PAYLOAD>> " + JSON.stringify(action));
+				/*
+				console.log(
+					propertyChanged +
+						" changed to " +
+						newPropertyValue +
+						" -- >>PAYLOAD>> " +
+						JSON.stringify(action)
+				);
+				*/
 				laneSysId = newPropertyValue;
 				lanes[1].sysid = laneSysId;
 			}
@@ -53,11 +76,35 @@ export default {
 				lanes: lanes,
 			});
 		},
-
+		[actionTypes.COMPONENT_BOOTSTRAPPED]: ({ dispatch }) => {
+			dispatch("GET_APP_SCOPE", {});
+		},
+		GET_APP_SCOPE: createHttpEffect(
+			"/api/x_165033_uibuild_0/batch_update_sets/get_scope",
+			{
+				startActionType: "GETTING_SCOPE",
+				successActionType: "SCOPE_RETREIVED",
+				errorActionType: "SCOPE_FAILED",
+				progressActionType: "SCOPE_IN_PROGRESS",
+			}
+		),
+		GETTING_SCOPE: ({ action }) => {
+			console.log("GETTING_SCOPE " + JSON.stringify(action));
+		},
+		SCOPE_RETRIEVED: ({ action }) => {
+			console.log("SCOPE_RETRIEVED " + JSON.stringify(action));
+		},
+		SCOPE_FAILED: ({ action }) => {
+			console.log("SCOPE_FAILED " + JSON.stringify(action));
+		},
+		SCOPE_IN_PROGRESS: ({ action }) => {
+			console.log("SCOPE_IN_PROGRESS " + JSON.stringify(action));
+		},
 		[actionTypes.COMPONENT_CONNECTED]: ({ dispatch }) => {
 			dispatch("UPDATE_SETS_REQUESTED", {
 				table: "sys_update_set",
-				sysparm_query: "state=in progress^application.scope=x_165033_uibuild_0^parentISEMPTY^ORDERBYsys_created_on",
+				sysparm_query:
+					"state=in progress^application.scope=x_165033_uibuild_0^parentISEMPTY^ORDERBYsys_created_on",
 			});
 		},
 		UPDATE_SETS_REQUESTED: createHttpEffect("/api/now/table/:table", {
