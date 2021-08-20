@@ -48,16 +48,16 @@ createCustomElement("x-165033-ui-builder-1", {
 				//console.log(">>> batchSysIds " + batchSysIds.toString());
 			}
 			dispatch("UPDATE_SETS", {
-				data: {
-					parent: "e2b80d061b827010e4495467624bcb02",
-				},
+				data: [{
+					parentSet: "e2b80d061b827010e4495467624bcb02",
+				}],
 			});
 		},
 		UPDATE_SETS: createHttpEffect(
-			"api/now/table/sys_update_set/a361dd4b1b313010e4495467624bcb74",
+			"/api/x_165033_uibuild_0/batch_update_sets/update_sets",
 			{
 				method: "PATCH",
-				dataParam: "data",
+				dataParam: ["data"],
 				successActionType: "SETS_UPDATED",
 			}
 		),
