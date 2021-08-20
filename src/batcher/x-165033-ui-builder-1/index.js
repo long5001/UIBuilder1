@@ -8,7 +8,9 @@ import { CARD_DROPPED } from "../constants";
 import "../card";
 
 createCustomElement("x-165033-ui-builder-1", {
-	renderer: { type: snabbdom },
+	renderer: {
+		type: snabbdom,
+	},
 	view,
 	properties: {
 		laneId: {
@@ -40,29 +42,26 @@ createCustomElement("x-165033-ui-builder-1", {
 						return cards;
 					}
 				});
-				//console.log(">>>batchAarray " + JSON.stringify(batch));
-				var batchSysIds = [];
-				for (var i = 0; i < batch.length; i++) {
-					batchSysIds.push(batch[i].parentSet.sysid.toString());
-				}
-				//console.log(">>> batchSysIds " + batchSysIds.toString());
+				console.log(">>>batchAarray " + JSON.stringify(batch));
 			}
 			dispatch("UPDATE_SETS", {
-				data: [{
-					parentSet: "e2b80d061b827010e4495467624bcb02",
-				}],
+				data: batch,
 			});
 		},
 		UPDATE_SETS: createHttpEffect(
 			"/api/x_165033_uibuild_0/batch_update_sets/update_sets",
 			{
 				method: "PATCH",
-				dataParam: ["data"],
+				dataParam: "data",
+				startActionType: "BATCHING_STARTED",
 				successActionType: "SETS_UPDATED",
 			}
 		),
+		BATCHING_STARTED: ({ action }) => {
+			console.log("START" + JSON.stringify(action.meta.request.data));
+		},
 		SETS_UPDATED: ({ action }) => {
-			console.log(JSON.stringify(action.payload));
+			console.log('END ' + JSON.stringify(action.meta.request.data));
 		},
 	},
 	styles,
@@ -71,7 +70,10 @@ createCustomElement("x-165033-ui-builder-1", {
 			behavior: dropBehavior,
 			options: {
 				onDrop(card, { dispatch, properties: { laneId } }) {
-					const nextCard = { ...card, lane: laneId };
+					const nextCard = {
+						...card,
+						lane: laneId,
+					};
 					dispatch(CARD_DROPPED, nextCard);
 				},
 			},

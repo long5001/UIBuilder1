@@ -16,6 +16,7 @@ createCustomElement("example-card", {
 		title: {},
 		lane: {},
 		parentSet: {},
+		setSysId: {}
 	},
 	styles,
 	behaviors: [

@@ -77,7 +77,7 @@ export default {
 			dispatch("UPDATE_SETS_REQUESTED", {
 				table: "sys_update_set",
 				sysparm_query:
-					"state=in progress^application.scope=x_165033_uibuild_0^ORDERBYsys_created_on",
+					"state=in progress^application.scope=x_165033_uibuild_0^parentISEMPTY^ORDERBYsys_created_on",
 			});
 		},
 		UPDATE_SETS_REQUESTED: createHttpEffect("/api/now/table/:table", {
@@ -95,6 +95,7 @@ export default {
 					title: sets[i].name,
 					cardId: i,
 					lane: 0,
+					setSysId: sets[i].sys_id
 				});
 			}
 			updateState({
