@@ -110,21 +110,20 @@ export default {
 		UPDATE_SETS_REQUESTED: createHttpEffect("/api/now/table/:table", {
 			pathParams: ["table"],
 			queryParams: ["sysparm_query"],
-			startActionType: "SET_SEARCH_STARTED",
 			successActionType: "SET_SEARCH_FINISHED",
 		}),
-		SET_SEARCH_STARTED: () => {},
 		SET_SEARCH_FINISHED: ({ action, updateState }) => {
 			var sets = action.payload.result;
 			var setObjArray = [];
-			for (var i = 0; i < sets.length; i++) {
+			sets.array.forEach(element => {
 				setObjArray.push({
-					title: sets[i].name,
+					title: element.name,
 					cardId: i,
 					lane: 0,
-					setSysId: sets[i].sys_id,
+					setSysId: element.sys_id,
 				});
-			}
+			});
+			
 			updateState({
 				cards: setObjArray,
 			});

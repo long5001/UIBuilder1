@@ -7,12 +7,11 @@ import "../board";
 import "@servicenow/now-card";
 
 const view = (state, { updateState }) => {
-	//const {parentSetName} = state;
 	const shadowRoot = document.querySelector(
 		"x-165033-ui-builder-create-parent"
 	).shadowRoot;
 	return (
-		<div>
+		<div id="createParentButtonDiv">
 			<input
 				value=""
 				placeholder="Enter Batch Parent Name"
@@ -30,6 +29,7 @@ const view = (state, { updateState }) => {
 				on-click={() => {
 					//alert(parentSetName);
 					shadowRoot.getElementById("boardDiv").style.display = "block";
+					shadowRoot.getElementById("createParentButtonDiv").style.display = "none";
 				}}
 			></now-button>
 			<div id="boardDiv" className="board-hidden">
@@ -69,15 +69,9 @@ createCustomElement("x-165033-ui-builder-create-parent", {
 			{
 				method: "POST",
 				dataParam: "requestData",
-				startActionType: "NEW_SET_REQUESTED",
-				successActionType: "NEW_SET_CREATED",
 			}
 		),
-		NEW_SET_REQUESTED: () => {},
 		NEW_SET_CREATED: ({ action, updateState }) => {
-			console.log(
-				"NEW_SET_CREATED -- " + JSON.stringify(action.payload.result)
-			);
 			updateState({
 				parentSetId: action.payload.result.sys_id,
 			});

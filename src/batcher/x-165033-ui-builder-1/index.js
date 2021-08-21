@@ -42,7 +42,6 @@ createCustomElement("x-165033-ui-builder-1", {
 						return cards;
 					}
 				});
-				console.log(">>>batchAarray " + JSON.stringify(batch));
 			}
 			dispatch("UPDATE_SETS", {
 				data: batch,
@@ -57,12 +56,6 @@ createCustomElement("x-165033-ui-builder-1", {
 				successActionType: "SETS_UPDATED",
 			}
 		),
-		BATCHING_STARTED: ({ action }) => {
-			//console.log("START" + JSON.stringify(action));
-		},
-		SETS_UPDATED: ({ action }) => {
-			//console.log('END ' + JSON.stringify(action.meta.request.data));
-		},
 	},
 	styles,
 	behaviors: [
