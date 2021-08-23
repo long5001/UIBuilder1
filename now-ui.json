@@ -1,12 +1,12 @@
 {
 	"components": {
-	    "x-165033-ui-builder-1": {
+	    "x-165033-ui-builder-create-parent": {
 	        "innerComponents": [],
 			"uiBuilder": {
 				"associatedTypes": ["global.core", "global.landing-page"],
-				"label": "My Component",
+				"label": "Update Set Batcher",
 				"icon": "document-outline",
-				"description": "A description of my component",
+				"description": "Drag and drop In Progress update sets to a parent set.",
 				"category": "primitives"
 			}
 	    }
