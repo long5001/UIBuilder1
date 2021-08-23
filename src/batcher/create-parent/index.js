@@ -11,27 +11,29 @@ const view = (state, { updateState }) => {
 		"x-165033-ui-builder-create-parent"
 	).shadowRoot;
 	return (
-		<div id="createParentButtonDiv">
-			<input
-				value=""
-				placeholder="Enter Batch Parent Name"
-				id="parentSetName"
-				on-input={(e) => updateState({ parentSetName: e.target.value })}
-			/>
-			<now-button
-				label="Create Parent"
-				variant="primary"
-				size="md"
-				icon=""
-				config-aria={{}}
-				tooltip-content=""
-				append-to-payload={{ buttonId: "createParentButton" }}
-				on-click={() => {
-					//alert(parentSetName);
-					shadowRoot.getElementById("boardDiv").style.display = "block";
-					shadowRoot.getElementById("createParentButtonDiv").style.display = "none";
-				}}
-			></now-button>
+		<div>
+			<div id="createParentButtonDiv">
+				<input
+					value=""
+					placeholder="Enter Batch Parent Name"
+					id="parentSetName"
+					on-input={(e) => updateState({ parentSetName: e.target.value })}
+				/>
+				<now-button
+					label="Create Parent"
+					variant="primary"
+					size="md"
+					icon=""
+					config-aria={{}}
+					tooltip-content=""
+					append-to-payload={{ buttonId: "createParentButton" }}
+					on-click={() => {
+						shadowRoot.getElementById("boardDiv").style.display = "block";
+						shadowRoot.getElementById("createParentButtonDiv").style.display =
+							"none";
+					}}
+				></now-button>
+			</div>
 			<div id="boardDiv" className="board-hidden">
 				<x-165033-ui-builder-1-board
 					parentSetName={state.parentSetName}

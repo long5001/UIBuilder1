@@ -64,8 +64,8 @@ export default {
 		GETTING_SCOPE: ({ action }) => {
 			console.log("GETTING_SCOPE " + JSON.stringify(action));
 		},
-		SCOPE_RETRIEVED: ({ action }) => {
-			console.log("SCOPE_RETRIEVED " + JSON.stringify(action));
+		SCOPE_RETRIEVED: ({ coeffects }) => {
+			console.log("SCOPE_RETRIEVED " + JSON.stringify(coeffects));
 		},
 		SCOPE_FAILED: ({ action }) => {
 			console.log("SCOPE_FAILED " + JSON.stringify(action));
@@ -88,15 +88,14 @@ export default {
 		SET_SEARCH_FINISHED: ({ action, updateState }) => {
 			var sets = action.payload.result;
 			var setObjArray = [];
-			sets.array.forEach(element => {
+			for (var i = 0; i < sets.length; i++) {
 				setObjArray.push({
-					title: element.name,
+					title: sets[i].name,
 					cardId: i,
 					lane: 0,
-					setSysId: element.sys_id,
+					setSysId: sets[i].sys_id,
 				});
-			});
-			
+			}
 			updateState({
 				cards: setObjArray,
 			});
