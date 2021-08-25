@@ -6,7 +6,7 @@ export default (state) => {
 		<div className="lane">
 			<header>{title}</header>
 			{cards.map((card) => (
-				<example-card
+				<x-165033-example-card
 					key={card.cardId}
 					card-id={card.cardId}
 					title={card.title}

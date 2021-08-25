@@ -5,7 +5,7 @@ import { dragBehavior } from "../behaviors/dragDropBehaviors";
 
 const view = ({ properties: { title } }) => <div className="card">{title}</div>;
 
-createCustomElement("example-card", {
+createCustomElement("x-165033-example-card", {
 	renderer: { type: snabbdom },
 	view,
 	properties: {
@@ -16,7 +16,7 @@ createCustomElement("example-card", {
 		title: {},
 		lane: {},
 		parentSet: {},
-		setSysId: {}
+		setSysId: {},
 	},
 	styles,
 	behaviors: [
