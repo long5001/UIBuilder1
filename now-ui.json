@@ -1,17 +1,5 @@
 {
   "components": {
-    "x-165033-example-card": {
-      "innerComponents": [],
-      "properties": []
-    },
-    "x-165033-ui-builder-1-board": {
-      "innerComponents": [],
-      "properties": []
-    },
-    "x-165033-ui-builder-1": {
-      "innerComponents": [],
-      "properties": []
-    },
     "x-165033-ui-builder-create-parent": {
       "innerComponents": ["now-button"],
       "uiBuilder": {
